@@ -6,7 +6,7 @@ function CheckoutSteps({step1, step2, step3, step4}) {
     <div>
       <div className="link-container">
         {step1 ? (
-          <Link>Login</Link>
+          <Link to="/login">Login</Link>
         ) : (
           <Link disabled>Login</Link>
         )}

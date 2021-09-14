@@ -14,6 +14,7 @@ import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Shipping from './pages/Shipping';
 import Payment from './pages/Payment';
+import PlaceOrder from './pages/PlaceOrder';
 
 import { FooterContainer } from './containers/footer'
 import Navbar from './components/navbar/Navbar';
@@ -37,6 +38,7 @@ function App() {
           <Route path="/profile" component={Profile} />
           <Route path="/shipping" component={Shipping} />
           <Route path="/payment" component={Payment} />
+          <Route path="/placeorder" component={PlaceOrder} />
         </Switch>
       </Router>
       

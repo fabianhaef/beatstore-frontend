@@ -33,7 +33,7 @@ function Payment({history}) {
         <label htmlFor='email'>Select Method</label>
         <input type='radio' placeholder="PayPal" value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} checked/>
 
-        <button type="subtmit">Submit Payment Method</button>
+        <button type="submit">Submit Payment Method</button>
       </form>
     </FormContainer>
   )
