@@ -18,6 +18,7 @@ import PlaceOrder from './pages/PlaceOrder';
 
 import { FooterContainer } from './containers/footer'
 import Navbar from './components/navbar/Navbar';
+import OrderScreen from './pages/OrderScreen';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/about" exact component={About} />
           <Route path="/beats/:id" exact component={Beat} />
           <Route path="/cart/:id?" exact component={Cart} />
+          <Route path="/order/:id" component={OrderScreen} />
           
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
@@ -39,6 +41,7 @@ function App() {
           <Route path="/shipping" component={Shipping} />
           <Route path="/payment" component={Payment} />
           <Route path="/placeorder" component={PlaceOrder} />
+
         </Switch>
       </Router>
       
