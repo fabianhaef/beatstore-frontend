@@ -30,7 +30,7 @@ function OrderScreen({match}) {
 
   
   if(!loading &&!error) {
-    order.itemsPrice = order.orderItems.reduce((acc, item) => acc + item.price, 0).toFixed(2)
+    order.itemsPrice = Number(order.orderItems.reduce((acc, item) => acc + item.price, 0)).toFixed(2)
   }
 
   const addPayPalScript = () => {
@@ -76,7 +76,7 @@ function OrderScreen({match}) {
         <p><strong>Email: </strong><a href={`mailto:${order.user.email}`}>{order.user.email}</a></p>
         <h2>Payment Method</h2>
         <p><strong>Method: </strong>{order.user.paymentMethod}</p>
-        {order.isPaid ? (
+        {order.is_paid ? (
           <Message>Paid on {order.paidAt}</Message>
         ) : (
           <Message>Order not paid yet</Message>
@@ -96,8 +96,7 @@ function OrderScreen({match}) {
           </div>
           )
         }
-
-        {!order.isPaid && (
+        {!order.is_paid && (
           <div>
             {loadingPay && <Loader />}
             {!sdkReady ? (

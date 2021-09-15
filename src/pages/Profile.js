@@ -8,6 +8,7 @@ import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
 
 import {getUserDetails, updateUserProfile} from '../actions/userActions';
+import { listMyOrders } from '../actions/orderActions';
 
 import {USER_UPDATE_PROFILE_RESET} from '../constants/userConstants'
 
@@ -29,6 +30,9 @@ function Profile({history}) {
   const userUpdateProfile = useSelector(state => state.userUpdateProfile)
   const {success} = userUpdateProfile
 
+  const orderListMy = useSelector(state => state.orderListMy)
+  const {loading: loadingOrders, error: errorOrders, orders} = orderListMy
+
   useEffect(() => {
     if (!userInfo) {
         history.push('/login')
@@ -36,7 +40,7 @@ function Profile({history}) {
         if (!user || !user.name || success || userInfo._id !== user._id) {
             dispatch({ type: USER_UPDATE_PROFILE_RESET })
             dispatch(getUserDetails('profile'))
-            // dispatch(listMyOrders())
+            dispatch(listMyOrders())
         } else {
             setName(user.name)
             setEmail(user.email)
@@ -54,27 +58,49 @@ function Profile({history}) {
   }
 
   return (
-    <FormContainer>
-      <h1>Update your profile</h1>
-      {message && <Message variant='danger'>{message}</Message>}
-      {error && <Message variant='danger'>{error}</Message>}
-      {loading && <Loader />}
-      <form onSubmit={submitHandler}>
-      <label htmlFor='email'>Name</label>
-        <input type='text' placeholder="Enter your name" value={name ? name : ''} onChange={(e) => setName(e.target.value)} required/>
+    <div>
+      <FormContainer>
+        <h1>Update your profile</h1>
+        {message && <Message variant='danger'>{message}</Message>}
+        {error && <Message variant='danger'>{error}</Message>}
+        {loading && <Loader />}
+        <form onSubmit={submitHandler}>
+        <label htmlFor='email'>Name</label>
+          <input type='text' placeholder="Enter your name" value={name ? name : ''} onChange={(e) => setName(e.target.value)} required/>
 
-        <label htmlFor='email'>Email Adress</label>
-        <input type='email' placeholder="Enter email" value={email ? email : ''} onChange={(e) => setEmail(e.target.value)} required/>
+          <label htmlFor='email'>Email Adress</label>
+          <input type='email' placeholder="Enter email" value={email ? email : ''} onChange={(e) => setEmail(e.target.value)} required/>
 
-        <label htmlFor='password'>Password</label>
-        <input type='password' placeholder="Enter password" value={password ? password : ''} onChange={(e) => setPassword(e.target.value)} required/>
+          <label htmlFor='password'>Password</label>
+          <input type='password' placeholder="Enter password" value={password ? password : ''} onChange={(e) => setPassword(e.target.value)} required/>
 
-        <label htmlFor='confirmPassword'>Confirm Password</label>
-        <input type='password' placeholder="Enter password" value={confirmPassword ? confirmPassword : ''} onChange={(e) => setConfirmPassword(e.target.value)} required/>
+          <label htmlFor='confirmPassword'>Confirm Password</label>
+          <input type='password' placeholder="Enter password" value={confirmPassword ? confirmPassword : ''} onChange={(e) => setConfirmPassword(e.target.value)} required/>
 
-        <button type="submit">Update</button>
-      </form>
-    </FormContainer>
+          <button type="submit">Update</button>
+        </form>
+      </FormContainer>
+
+      <h2>My Orders</h2>
+      {loadingOrders ? (
+        <Loader />
+      ) : errorOrders ? (
+        <Message>{errorOrders}</Message>
+      ) : (
+        <div>
+          {orders.map(order => (
+            
+            <div key={order._id}>
+              <p><strong>ID: </strong>{order._id}</p>
+              <p><strong>Total Price: </strong>{order.total_price}</p>
+            </div>
+          ))}
+        
+        </div>
+      )}
+    </div>
+
+
   )
 }
 

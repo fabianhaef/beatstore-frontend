@@ -18,13 +18,13 @@ function PlaceOrder({history}) {
   const orderCreate = useSelector(state => state.orderCreate)
   const {order, error, success} = orderCreate
 
-
   const dispatch = useDispatch()
+  
   const cart = useSelector(state => state.cart)
   
-  cart.itemsPrice = cart.cartItems.reduce((acc, item) => acc + item.price, 0).toFixed(2)
-  cart.taxPrice = Number((0.077) * cart.itemsPrice).toFixed(2)
-  cart.totalPrice = Number(Number(cart.itemPrice) + Number(cart.taxPrice)).toFixed(2)
+  cart.itemsPrice = Number(cart.cartItems.reduce((acc, item) => acc + Number(item.price), 0))
+  cart.taxPrice = Number((0.082) * cart.itemsPrice).toFixed(2)
+  cart.totalPrice = (Number(cart.itemsPrice) + Number(cart.taxPrice)).toFixed(2)
 
   if(!cart.paymentMethod) {
     history.push('/payment')
@@ -78,6 +78,9 @@ function PlaceOrder({history}) {
           </div>
           )
         }
+
+        <h3>Cart Total Price</h3>
+        ${Number(cart.totalPrice)}
       </div>
       <div>
         {error && <Message variant='danger'>{error}</Message>}

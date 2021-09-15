@@ -39,7 +39,7 @@ function Cart({match, location, history }) {
               <div key={item.title}>
                 <h3>{item.title}</h3>
                 <img src={item.image} alt={item.name} />
-                <p>Price</p>
+                <p>Price ${item.price}</p>
 
                 <button type="submit" onClick={() => removeFromCartHandler(item.product)}>Remove From cart</button>
               </div>
@@ -47,7 +47,10 @@ function Cart({match, location, history }) {
           </div>
         )
       }
+      <h2>Your Total</h2>
+      ${cartItems.reduce((acc, item) => acc + Number(item.price), 0).toFixed(2)}
       </div>
+
       {cartItems.length === 0 
         ? <button onClick={checkoutHandler} disabled>Proceed to checkout</button>
         : <button onClick={checkoutHandler}>Proceed to checkout</button>

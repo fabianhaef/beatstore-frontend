@@ -15,8 +15,6 @@ function Beats() {
 
   useEffect(() => {
     dispatch(listBeats())
-
-     
   }, [dispatch])
 
   return (
