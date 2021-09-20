@@ -103,7 +103,7 @@ function OrderScreen({match}) {
               <Loader />
             ) : (
               <PayPalButton 
-                amount='10' 
+                amount={order.totalPrice} 
                 onSuccess={successPaymentHandler}
               />
             )}
