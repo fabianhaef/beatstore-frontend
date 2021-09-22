@@ -1,6 +1,7 @@
 import React from 'react'
 import {Nav, NavLink, Bars, NavMenu, NavBtn, NavBtnLink} from './NavbarElements'
 import {useDispatch, useSelector} from 'react-redux';
+import SearchBox from "../../components/SearchBox";
 
 import {logout} from '../../actions/userActions';
 
@@ -23,6 +24,7 @@ function Navbar() {
         </NavLink>
         <Bars />
         <NavMenu>
+          <SearchBox />
           <NavLink to="/beats">
             Beats
           </NavLink>

@@ -8,13 +8,14 @@ import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
 
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import Paginate from '../components/Paginate'
 
 function ProductList({history, match}) {
 
   const dispatch = useDispatch()
 
   const productList = useSelector(state => state.productList)
-  const {loading, error, products} = productList
+  const {loading, error, products, page, pages} = productList
 
   const productDelete = useSelector(state => state.productDelete)
   const {loading: loadingDelete, error: errorDelete, success: successDelete} = productDelete
@@ -25,6 +26,7 @@ function ProductList({history, match}) {
   const userLogin = useSelector(state => state.userLogin)
   const {userInfo} = userLogin
 
+  let keyword = history.location.search
   useEffect(() => {
     dispatch({type: PRODUCT_CREATE_RESET})
 
@@ -35,10 +37,10 @@ function ProductList({history, match}) {
     if (successCreate) {
       history.push(`/admin/product/${createdProduct._id}/edit/`)
     } else {
-      dispatch(listProducts())
+      dispatch(listProducts(keyword))
     }
 
-  }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct])
+  }, [dispatch, history, userInfo, successDelete, successCreate, createdProduct, keyword])
 
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure you want to delete this product?')) {
@@ -70,22 +72,25 @@ function ProductList({history, match}) {
         ? (<Message>{error}</Message>)
         : (
           <div>
-            {products.map(product => (
-              <div key={product._id}>
-                <p>ID {product._id}</p>
-                <p>NAME {product.title}</p>
-                <p>PRICE {product.price}</p>
-                <p>SOUNDKIT {product.is_soundkit}</p>
-                <Link to={`/admin/product/${product._id}/edit/`}>
-                  <i className='fas fa-edit'></i>
-                </ Link>                  
-                <Link>
-                  <button onClick={() => deleteHandler(product._id)}>
-                    <i className="fas fa-check" style={{'color': 'red'}}></i>
-                  </button>
-                </Link>
-              </div>
-            ))}
+            <div>
+              {products.map(product => (
+                <div key={product._id}>
+                  <p>ID {product._id}</p>
+                  <p>NAME {product.title}</p>
+                  <p>PRICE {product.price}</p>
+                  <p>SOUNDKIT {product.is_soundkit}</p>
+                  <Link to={`/admin/product/${product._id}/edit/`}>
+                    <i className='fas fa-edit'></i>
+                  </ Link>                  
+                  <Link>
+                    <button onClick={() => deleteHandler(product._id)}>
+                      <i className="fas fa-check" style={{'color': 'red'}}></i>
+                    </button>
+                  </Link>
+                </div>
+              ))}
+            </div>
+            <Paginate pages={pages} page={page} isAdmin={true} />
           </div>
         )}
       
