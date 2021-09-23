@@ -5,6 +5,7 @@ import Product from '../components/Product'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Paginate from '../components/Paginate'
+import Layout from '../components/Layout'
 
 import {listProducts} from '../actions/productActions'
 
@@ -21,7 +22,7 @@ function Home({history}) {
   }, [dispatch, keyword])
 
   return (
-    <div>
+    <Layout>
       <h1>Welcome to amphibian</h1>
       {loading ? <Loader />
         : error ? <Message variant='error'>{error}</Message>
@@ -36,7 +37,7 @@ function Home({history}) {
             <Paginate page={page} pages={pages} keyword={keyword}/>     
           </div>
       }
-    </div>
+    </Layout>
   )
 }
 

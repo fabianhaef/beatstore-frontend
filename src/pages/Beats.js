@@ -1,20 +1,24 @@
 import React, {useEffect} from 'react'
-import { Link } from 'react-router-dom';
-import {useDispatch, useSelector} from 'react-redux';
 
-import {listBeats} from '../actions/productActions'
+import {useDispatch, useSelector} from 'react-redux';
 
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Product from '../components/Product'
+import Paginate from '../components/Paginate'
+
+import {listProducts} from '../actions/productActions'
+
 
 function Beats() {
   const dispatch = useDispatch()
-  const beatList = useSelector(state => state.productList)
-  const {error, loading, products} = beatList
+  const productList = useSelector(state => state.productList)
+  const {error, loading, products, page, pages} = productList
+  const beats = products.filter(product => product.is_soundkit !== true)
+
 
   useEffect(() => {
-    dispatch(listBeats())
+    dispatch(listProducts())
   }, [dispatch])
 
   return (
@@ -24,10 +28,13 @@ function Beats() {
         : error ? <Message variant='error'>{error}</Message>
           : 
           <div>
-            <h2>Latest Products</h2>
-            {products.map(product => (
-              <Product product={product} key={product._id}/>
-            ))}
+            <div>
+              <h2>Latest Beats</h2>
+              {beats.map(beat => (
+                <Product product={beat} key={beat._id}/>
+              ))}
+            </div>
+            <Paginate page={page} pages={pages}/>
           </div>
       }
 

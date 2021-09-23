@@ -32,12 +32,12 @@ function App() {
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/beats" exact component={Beats} />
-          <Route path="/soundkits" exact component={Soundkits} />
-          <Route path="/licences" exact component={Licences} />
-          <Route path="/about" exact component={About} />
-          <Route path="/beats/:id" exact component={Beat} />
-          <Route path="/cart/:id?" exact component={Cart} />
+          <Route path="/beats" component={Beats} />
+          <Route path="/soundkits" component={Soundkits} />
+          <Route path="/licences"  component={Licences} />
+          <Route path="/about"  component={About} />
+          <Route path="/beats/:id"  component={Beat} />
+          <Route path="/cart/:id?"  component={Cart} />
           <Route path="/order/:id" component={OrderScreen} />
           
           <Route path="/login" component={Login} />

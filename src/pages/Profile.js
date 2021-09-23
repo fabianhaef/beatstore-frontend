@@ -92,7 +92,7 @@ function Profile({history}) {
             
             <div key={order._id}>
               <p><strong>ID: </strong>{order._id}</p>
-              <p><strong>Total Price: </strong>{order.total_price}</p>
+              <p><strong>Total Price: </strong>{order.totalPrice}</p>
             </div>
           ))}
         

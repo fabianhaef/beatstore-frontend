@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import { Link } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {listSoundkits} from '../actions/productActions'
+import {listProducts} from '../actions/productActions'
 
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -10,25 +10,24 @@ import Product from '../components/Product'
 
 function Soundkits() {
   const dispatch = useDispatch()
-  const beatList = useSelector(state => state.productList)
-  const {error, loading, products} = beatList
+  const productList = useSelector(state => state.productList)
+  const {error, loading, products, page, pages} = productList
+  const soundkits = products.filter(product => product.is_soundkit === true)
 
   useEffect(() => {
-    dispatch(listSoundkits())
-
-     
+    dispatch(listProducts())
   }, [dispatch])
 
   return (
     <div>
-      <h1>Welcome to amphibian</h1>
+      <h1>Welcome to Soundkits</h1>
       {loading ? <Loader />
         : error ? <Message variant='error'>{error}</Message>
           : 
           <div>
-            <h2>Latest Products</h2>
-            {products.map(product => (
-              <Product product={product} key={product._id}/>
+            <h2>Latest Kits</h2>
+            {soundkits.map(soundkit => (
+              <Product product={soundkit} key={soundkit._id}/>
             ))}
           </div>
       }
