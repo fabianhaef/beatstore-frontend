@@ -1,0 +1,36 @@
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  max-width: 400px;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+}
+
+.product:last-child {
+  margin-right: 0;
+}
+
+.product-title-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.product-title {
+  font-family: 'Gemunu Libre', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+
+}
+
+.product-image {
+  width: 100%;
+}

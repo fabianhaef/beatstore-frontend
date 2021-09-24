@@ -8,6 +8,7 @@ import{ useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
+import Layout from '../components/Layout'
 
 import {listProductDetails, updateProduct} from '../actions/productActions';
 
@@ -119,7 +120,7 @@ function ProductEdit({match, history}) {
 
 
   return (
-    <div>
+    <Layout>
       <Link to='/admin/productlist'>Go back to product list</ Link>
       <FormContainer>
         <h1>Edit Product</h1>
@@ -161,7 +162,7 @@ function ProductEdit({match, history}) {
               </form>
             )}
       </FormContainer>
-    </div>
+    </Layout>
   )
 }
 

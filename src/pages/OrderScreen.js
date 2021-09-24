@@ -4,7 +4,7 @@ import {PayPalButton} from 'react-paypal-button-v2'
 
 import {Link} from 'react-router-dom';
 
-import FormContainer from '../components/FormContainer';
+import Layout from '../components/Layout'
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 
@@ -68,7 +68,7 @@ function OrderScreen({match}) {
   ) : error ? (
     <Message>{error}</Message>
   ) : (
-    <div>
+    <Layout >
         <h1>Your order #{order._id}</h1>
       <div>
         <h2>Shipping Information</h2>
@@ -110,7 +110,7 @@ function OrderScreen({match}) {
           </div>
         )}
       </div>
-    </div>
+    </Layout>
   )
 }
 

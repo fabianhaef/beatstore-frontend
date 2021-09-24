@@ -6,6 +6,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Product from '../components/Product'
 import Paginate from '../components/Paginate'
+import Layout from '../components/Layout'
 
 import {listProducts} from '../actions/productActions'
 
@@ -22,23 +23,25 @@ function Beats() {
   }, [dispatch])
 
   return (
-    <div>
-      <h1>Welcome to amphibian</h1>
+    <Layout>
+      <h1>Welcome to Beats</h1>
       {loading ? <Loader />
         : error ? <Message variant='error'>{error}</Message>
           : 
           <div>
             <div>
-              <h2>Latest Beats</h2>
-              {beats.map(beat => (
-                <Product product={beat} key={beat._id}/>
-              ))}
+              <h2>Here are my latest beats</h2>
+              <div className="product-list">
+                {beats.map(beat => (
+                  <Product product={beat} key={beat._id}/>
+                ))}
+              </div>
             </div>
             <Paginate page={page} pages={pages}/>
           </div>
       }
 
-    </div>
+    </Layout>
   )
 }
 

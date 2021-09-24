@@ -6,6 +6,7 @@ import { listUsers } from '../actions/userActions';
 
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import Layout from '../components/Layout'
 
 function UserList({history}) {
 
@@ -26,7 +27,7 @@ function UserList({history}) {
   }, [dispatch, history, userInfo])
 
   return (
-    <div>
+    <Layout>
       <h1>Users</h1>
       {loading 
       ?
@@ -52,7 +53,7 @@ function UserList({history}) {
           </div>
         )}
       
-    </div>
+    </Layout>
   )
 }
 

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from '../actions/cartActions';
+import Layout from '../components/Layout'
 
 function Cart({match, location, history }) {
   const productId = match.params.id
@@ -27,7 +28,7 @@ function Cart({match, location, history }) {
   }
 
   return (
-    <div>
+    <Layout >
       <div>
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
@@ -55,7 +56,7 @@ function Cart({match, location, history }) {
         ? <button onClick={checkoutHandler} disabled>Proceed to checkout</button>
         : <button onClick={checkoutHandler}>Proceed to checkout</button>
         }
-    </div>
+    </Layout>
   )
 }
 

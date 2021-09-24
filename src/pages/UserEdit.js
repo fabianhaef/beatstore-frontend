@@ -6,6 +6,7 @@ import{ useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
+import Layout from '../components/Layout'
 
 import {getUserDetails, updateUser} from '../actions/userActions';
 import { USER_UPDATE_RESET } from '../constants/userConstants';
@@ -38,7 +39,7 @@ function UserEdit({match, history}) {
       }
     }
 
-  }, [user, userId, successUpdate, history])
+  }, [user, userId, successUpdate, history, dispatch])
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -46,7 +47,7 @@ function UserEdit({match, history}) {
   }
 
   return (
-    <div>
+    <Layout>
       <Link to='/admin/userlist'>Go back to user list</ Link>
       <FormContainer>
         <h1>Edit User</h1>
@@ -70,7 +71,7 @@ function UserEdit({match, history}) {
               </form>
             )}
       </FormContainer>
-    </div>
+    </Layout>
   )
 }
 

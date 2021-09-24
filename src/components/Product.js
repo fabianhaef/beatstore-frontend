@@ -2,14 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Product({product}) {
-  return (
-    <div>
-      <h3>{product.title}</h3>
-      <h4>Price: {product.price}</h4>
-      <Link to={`/beats/${product._id}`}>
-        <img src={product.image} width="240" height="240" alt={product.name}></img>
-      </Link>
 
+
+  return (
+    <div className="product">
+      <div className="product-title-bar">
+        <h3 className="product-title">{product.title}</h3>
+        <h4>${product.price}</h4>
+      </div>
+      <p>{product.description}</p>
+      <img src={product.image} alt={product.name} className="product-image"></img>
+      <Link to={`/beats/${product._id}`}>
+        Go to product
+      </Link>
     </div>
   )
 }

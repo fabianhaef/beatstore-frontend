@@ -9,6 +9,7 @@ import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Paginate from '../components/Paginate'
+import Layout from '../components/Layout';
 
 function ProductList({history, match}) {
 
@@ -53,7 +54,7 @@ function ProductList({history, match}) {
   }
 
   return (
-    <div>
+    <Layout>
       <button onClick={createProductHandler}>
         <i className="fas fa-plus"></i> Create Product
       </button>
@@ -94,7 +95,7 @@ function ProductList({history, match}) {
           </div>
         )}
       
-    </div>
+    </Layout>
   )
 }
 

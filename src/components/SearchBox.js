@@ -17,7 +17,7 @@ function SearchBox() {
   }
 
   return (
-    <form onSubmit={submitHandler} onChange={(e) => setKeyword(e.target.value)}>
+    <form onSubmit={submitHandler} onChange={(e) => setKeyword(e.target.value)} className="search-box">
       <input type="text" id="keyword" name="keyword" />
       <button type="submit">Submit</button>
     </form>

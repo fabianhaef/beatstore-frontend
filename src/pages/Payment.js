@@ -3,6 +3,7 @@ import{ useDispatch, useSelector } from 'react-redux'
 
 import FormContainer from '../components/FormContainer'
 import CheckoutSteps from '../components/CheckoutSteps'
+import Layout from '../components/Layout'
 
 import {savePaymentMethod} from '../actions/cartActions';
 
@@ -26,19 +27,21 @@ function Payment({history}) {
   }
 
   return (
-    <FormContainer>
-      <CheckoutSteps step1 step2 step3 />
+    <Layout>
+      <FormContainer>
+        <CheckoutSteps step1 step2 step3 />
 
-      <form onSubmit={submitHandler}>
-        <label>Select Method</label>
-        <label>
-          <input type='radio' placeholder="PayPal" value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} checked/>
-          Paypal
-        </label>
+        <form onSubmit={submitHandler}>
+          <label>Select Method</label>
+          <label>
+            <input type='radio' placeholder="PayPal" value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} checked/>
+            Paypal
+          </label>
 
-        <button type="submit">Submit Payment Method</button>
-      </form>
-    </FormContainer>
+          <button type="submit">Submit Payment Method</button>
+        </form>
+      </FormContainer>
+    </Layout>
   )
 }
 

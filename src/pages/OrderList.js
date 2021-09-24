@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import {Link} from 'react-router-dom';
 import{ useDispatch, useSelector } from 'react-redux'
 
 import { listOrders } from '../actions/orderActions';
 
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import Layout from '../components/Layout'
 
 function OrderList({history}) {
 
@@ -26,7 +26,7 @@ function OrderList({history}) {
   }, [dispatch, history, userInfo])
 
   return (
-    <div>
+    <Layout>
       <h1>Orders</h1>
       {loading 
       ?
@@ -56,7 +56,7 @@ function OrderList({history}) {
             ))}
           </div>
         )}
-    </div>
+    </Layout>
   )
 }
 

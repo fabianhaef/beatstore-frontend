@@ -6,6 +6,7 @@ import{ useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
+import Layout from '../components/Layout'
 
 import {register} from '../actions/userActions';
 
@@ -40,28 +41,31 @@ function Register({location, history}) {
   }
 
   return (
-    <FormContainer>
-      <h1>Register</h1>
-      {message && <Message variant='danger'>{message}</Message>}
-      {error && <Message variant='danger'>{error}</Message>}
-      {loading && <Loader />}
-      <form onSubmit={submitHandler}>
-      <label htmlFor='email'>Name</label>
-        <input type='text' placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required/>
+    <Layout>
 
-        <label htmlFor='email'>Email Adress</label>
-        <input type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+      <FormContainer>
+        <h1>Register</h1>
+        {message && <Message variant='danger'>{message}</Message>}
+        {error && <Message variant='danger'>{error}</Message>}
+        {loading && <Loader />}
+        <form onSubmit={submitHandler}>
+        <label htmlFor='email'>Name</label>
+          <input type='text' placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required/>
 
-        <label htmlFor='password'>Password</label>
-        <input type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+          <label htmlFor='email'>Email Adress</label>
+          <input type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
 
-        <label htmlFor='confirmPassword'>Confirm Password</label>
-        <input type='password' placeholder="Enter password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
+          <label htmlFor='password'>Password</label>
+          <input type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
 
-        <button type="submit">Register</button>
-      </form>
-      <p>Already a member <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link></p>
-    </FormContainer>
+          <label htmlFor='confirmPassword'>Confirm Password</label>
+          <input type='password' placeholder="Enter password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
+
+          <button type="submit">Register</button>
+        </form>
+        <p>Already a member <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link></p>
+      </FormContainer>
+    </Layout>
   )
 }
 

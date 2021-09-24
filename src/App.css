@@ -1,7 +1,27 @@
+@import url('../src/styles/Product.css');
+@import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@500;600;700&family=Roboto&display=swap');
+
 :root {
   --primary: rgba(64, 132, 132, 0.8)
 }
 
+*, html {
+  margin: 0;
+  padding: 0;
+}
+
+body, html {
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  box-sizing: border-box;
+}
 
 .success {
   background-color: green;
@@ -12,20 +32,12 @@
 }
 
 .layout {
-  margin: 2rem 8.75rem;
-  padding: 2rem 20rem;
+  margin: 2rem 8rem;
+  padding: 2rem 2rem;
 }
 
-@media only screen and (max-width: 496px) {
-  .layout {
-    margin: 0.5rem 0;
-    padding: 0.5rem 0 2rem;
-  }
-}
-
-@media only screen and (max-width: 1024px) {
-  .layout {
-    margin: 1rem 0;
-    padding: 1rem 0 2rem;
+@media screen and (max-width: 1368px) {
+  .search-box {
+    display: none;
   }
 }

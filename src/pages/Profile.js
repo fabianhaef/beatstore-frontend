@@ -1,5 +1,4 @@
 import React, {useState, useEffect } from 'react';
-import {Link} from 'react-router-dom';
 
 import{ useDispatch, useSelector } from 'react-redux'
 
@@ -89,7 +88,6 @@ function Profile({history}) {
       ) : (
         <div>
           {orders.map(order => (
-            
             <div key={order._id}>
               <p><strong>ID: </strong>{order._id}</p>
               <p><strong>Total Price: </strong>{order.totalPrice}</p>

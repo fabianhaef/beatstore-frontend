@@ -1,12 +1,11 @@
-import React, {useEffect, useState } from 'react';
+import React, {useEffect   } from 'react';
 import{ useDispatch, useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 
-import FormContainer from '../components/FormContainer';
+import Layout from '../components/Layout'
 import CheckoutSteps from '../components/CheckoutSteps';
 import Message from '../components/Message';
 
-import {saveShippingAddress} from '../actions/cartActions';
 import {createOrder} from '../actions/orderActions';
 
 import {ORDER_CREATE_RESET} from '../constants/orderConstants';
@@ -52,7 +51,7 @@ function PlaceOrder({history}) {
   }
 
   return (
-    <div>
+    <Layout >
       <CheckoutSteps step1 step2 step3 step4 />
       <div>
         <h1>Place your order</h1>
@@ -86,7 +85,7 @@ function PlaceOrder({history}) {
         {error && <Message variant='danger'>{error}</Message>}
         <button onClick={placeOrder}>Place Order</button>
       </div>
-    </div>
+    </Layout>
   )
 }
 

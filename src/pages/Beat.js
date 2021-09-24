@@ -6,6 +6,8 @@ import {listProductDetails} from '../actions/productActions'
 
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import Layout from '../components/Layout'
+import MusicPlayer from '../components/MusicPlayer';
 
 function Beat({ match, history }) {
   const dispatch = useDispatch()
@@ -23,7 +25,7 @@ function Beat({ match, history }) {
   }
 
   return (
-    <div>
+    <Layout>
       <Link to='/'>Go Back</Link>
       {loading ?
         <Loader></Loader>
@@ -34,6 +36,12 @@ function Beat({ match, history }) {
             <h4>{product.name} </h4>
             <h4>Price: {product.price} USD</h4>
             <img src={product.image} alt={product.name} />
+
+            {product.is_soundkit === false ? (
+              < MusicPlayer file={product.file} />
+            ) : (
+              <p>This is a soundkit, can not play a preview</p>
+            )}
       
             <div>
               <h5>Licences</h5>
@@ -43,12 +51,11 @@ function Beat({ match, history }) {
             <form method="POST">
               <button type="submit" onClick={addToCartHandler}>Add to cart</button>
             </form>
-            <button>Add to Wishlist</button>
           </div>
           )
       }
 
-    </div>
+    </Layout>
   )
 }
 

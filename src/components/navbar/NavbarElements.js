@@ -7,8 +7,13 @@ export const Nav = styled.nav`
   height: 80px;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem calc((100vw - 1000px) / 2);
+  padding: 2rem 10rem;
   z-index: 10;
+
+  @media screen and (max-width: 1368px) {
+    padding: 2rem 8rem;
+  }
+
 `;
 
 export const NavLink = styled(Link)`
