@@ -10,6 +10,7 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Paginate from '../components/Paginate'
 import Layout from '../components/Layout';
+import ProductAdmin from '../components/ProductAdmin';
 
 function ProductList({history, match}) {
 
@@ -30,6 +31,10 @@ function ProductList({history, match}) {
   let keyword = history.location.search
   useEffect(() => {
     dispatch({type: PRODUCT_CREATE_RESET})
+
+    if(userInfo === undefined) {
+      history.push('/login')
+    }
 
     if(!userInfo.is_admin) {
       history.push('/login')
@@ -55,10 +60,6 @@ function ProductList({history, match}) {
 
   return (
     <Layout>
-      <button onClick={createProductHandler}>
-        <i className="fas fa-plus"></i> Create Product
-      </button>
-
       {loadingDelete && <Loader />}
       {errorDelete && <Message>{errorDelete}</Message>}
 
@@ -66,6 +67,9 @@ function ProductList({history, match}) {
       {errorCreate && <Message>{errorCreate}</Message>}
 
       <h1>Products</h1>
+      <button onClick={createProductHandler} className="button-primary">
+        <i className="fas fa-plus"></i> Create Product
+      </button>
       {loading 
       ?
       (<Loader />)
@@ -73,28 +77,14 @@ function ProductList({history, match}) {
         ? (<Message>{error}</Message>)
         : (
           <div>
-            <div>
+            <div className="box-list">
               {products.map(product => (
-                <div key={product._id}>
-                  <p>ID {product._id}</p>
-                  <p>NAME {product.title}</p>
-                  <p>PRICE {product.price}</p>
-                  <p>SOUNDKIT {product.is_soundkit}</p>
-                  <Link to={`/admin/product/${product._id}/edit/`}>
-                    <i className='fas fa-edit'></i>
-                  </ Link>                  
-                  <Link>
-                    <button onClick={() => deleteHandler(product._id)}>
-                      <i className="fas fa-check" style={{'color': 'red'}}></i>
-                    </button>
-                  </Link>
-                </div>
+                <ProductAdmin product={product} />
               ))}
             </div>
             <Paginate pages={pages} page={page} isAdmin={true} />
           </div>
         )}
-      
     </Layout>
   )
 }

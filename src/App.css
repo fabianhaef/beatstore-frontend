@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@500;600;700&family=Roboto&display=swap');
 
 :root {
-  --primary: rgba(64, 132, 132, 0.8)
+  --primary: rgba(64, 132, 132, 0.8);
+  --white: #fcfcfc;
+  --black: #222222;
 }
 
 *, html {
@@ -17,6 +19,15 @@ body, html {
 
 a {
   text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+  font-size: 0.75rem;
+}
+
+ul {
+  margin-bottom: 1rem;
 }
 
 html {
@@ -40,4 +51,64 @@ html {
   .search-box {
     display: none;
   }
+}
+
+
+.button-primary {
+  background: var(--primary);
+  color: var(--white);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.button-primary:hover {
+  --primary: rgba(64, 132, 132, 0.6);
+  transition: 0.3s;
+}
+
+input {
+  border: 2px solid var(--primary);
+  min-width: 250px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.box {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 2rem;
+  max-width: 400px;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+}
+
+.box-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.container {
+  margin-top: 2rem;
+}
+
+.search-box {
+  margin-bottom: 0 !important;
+  background: #363434;
+}
+
+h1 {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  margin-bottom: 1.5rem;
 }

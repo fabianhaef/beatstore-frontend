@@ -9,9 +9,9 @@ function MusicPlayer({file}) {
 
   useEffect(() => {
     if(isPlaying) {
-      audioFile.pause()
+      this.audioFile.pause()
     } else {
-      audioFile.play()
+      this.audioFile.play()
     }
   }, [isClicked])
 

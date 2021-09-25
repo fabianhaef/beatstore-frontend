@@ -67,7 +67,7 @@ function UserEdit({match, history}) {
                 <label htmlFor='email'>Email Adress</label>
                 <input type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
 
-                <button type="submit">Update</button>
+                <button type="submit" className="button-primary">Update</button>
               </form>
             )}
       </FormContainer>

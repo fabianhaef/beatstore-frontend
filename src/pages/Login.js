@@ -43,8 +43,9 @@ function Login({location, history}) {
           <input type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}/>
           <label htmlFor='password'>Password</label>
           <input type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-          <button type="submit">Login</button>
+          <button type="submit" className="button-primary">Login</button>
         </form>
+        <br />
         <p>New customer? <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link></p>
       </FormContainer>
     </Layout>

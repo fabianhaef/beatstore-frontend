@@ -38,18 +38,14 @@ function Beat({ match, history }) {
             <img src={product.image} alt={product.name} />
 
             {product.is_soundkit === false ? (
-              < MusicPlayer file={product.file} />
+              //< MusicPlayer file={product.file} />
+              <p>Hello</p>
             ) : (
               <p>This is a soundkit, can not play a preview</p>
             )}
-      
-            <div>
-              <h5>Licences</h5>
-              <p>Show all licences with prices</p>
-            </div>
-      
+            
             <form method="POST">
-              <button type="submit" onClick={addToCartHandler}>Add to cart</button>
+              <button type="submit" className="button-primary" onClick={addToCartHandler}>Add to cart</button>
             </form>
           </div>
           )

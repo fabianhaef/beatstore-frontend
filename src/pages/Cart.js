@@ -53,8 +53,8 @@ function Cart({match, location, history }) {
       </div>
 
       {cartItems.length === 0 
-        ? <button onClick={checkoutHandler} disabled>Proceed to checkout</button>
-        : <button onClick={checkoutHandler}>Proceed to checkout</button>
+        ? <button onClick={checkoutHandler} disabled className="button-primary">Proceed to checkout</button>
+        : <br />
         }
     </Layout>
   )

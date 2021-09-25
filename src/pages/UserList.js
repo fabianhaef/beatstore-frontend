@@ -36,20 +36,22 @@ function UserList({history}) {
         ? (<Message>{error}</Message>)
         : (
           <div>
-            {users.map(user => (
-              <div key={user._id}>
-                <p>ID {user._id}</p>
-                <p>NAME {user.name}</p>
-                <p>EMAIL {user._email}</p>
-                <p>ADMIN {user.is_admin ? (
-                <Link to={`/admin/user/${user._id}/edit`}>
-                  <i className='fas fa-edit'></i>
-                </ Link>                  
-                ) : (
-                  <i className="fas fa-check" style={{'color': 'red'}}></i>
-                )}</p>
-              </div>
-            ))}
+            <div className="box-list">
+              {users.map(user => (
+                <div key={user._id}>
+                  <p>ID {user._id}</p>
+                  <p>NAME {user.name}</p>
+                  <p>EMAIL {user._email}</p>
+                  <p>ADMIN {user.is_admin ? (
+                  <Link to={`/admin/user/${user._id}/edit`}>
+                    <i className='fas fa-edit'></i>
+                  </ Link>                  
+                  ) : (
+                    <i className="fas fa-check" style={{'color': 'red'}}></i>
+                  )}</p>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       

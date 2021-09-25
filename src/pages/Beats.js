@@ -31,7 +31,7 @@ function Beats() {
           <div>
             <div>
               <h2>Here are my latest beats</h2>
-              <div className="product-list">
+              <div className="box-list">
                 {beats.map(beat => (
                   <Product product={beat} key={beat._id}/>
                 ))}

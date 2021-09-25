@@ -61,9 +61,10 @@ function Register({location, history}) {
           <label htmlFor='confirmPassword'>Confirm Password</label>
           <input type='password' placeholder="Enter password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
 
-          <button type="submit">Register</button>
+          <button type="submit" className="button-primary">Register</button>
         </form>
-        <p>Already a member <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link></p>
+        <br />
+        <p>Already a member? <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link></p>
       </FormContainer>
     </Layout>
   )

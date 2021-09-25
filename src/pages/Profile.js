@@ -5,6 +5,8 @@ import{ useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
+import Layout from '../components/Layout'
+import Order from '../components/Order'
 
 import {getUserDetails, updateUserProfile} from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
@@ -57,14 +59,14 @@ function Profile({history}) {
   }
 
   return (
-    <div>
+    <Layout>
       <FormContainer>
         <h1>Update your profile</h1>
         {message && <Message variant='danger'>{message}</Message>}
         {error && <Message variant='danger'>{error}</Message>}
         {loading && <Loader />}
-        <form onSubmit={submitHandler}>
-        <label htmlFor='email'>Name</label>
+        <form onSubmit={submitHandler} className="form">
+          <label htmlFor='email'>Name</label>
           <input type='text' placeholder="Enter your name" value={name ? name : ''} onChange={(e) => setName(e.target.value)} required/>
 
           <label htmlFor='email'>Email Adress</label>
@@ -76,29 +78,25 @@ function Profile({history}) {
           <label htmlFor='confirmPassword'>Confirm Password</label>
           <input type='password' placeholder="Enter password" value={confirmPassword ? confirmPassword : ''} onChange={(e) => setConfirmPassword(e.target.value)} required/>
 
-          <button type="submit">Update</button>
+          <button type="submit" className="button-primary">Update</button>
         </form>
       </FormContainer>
 
+      <div className="container">
       <h2>My Orders</h2>
-      {loadingOrders ? (
-        <Loader />
-      ) : errorOrders ? (
-        <Message>{errorOrders}</Message>
-      ) : (
-        <div>
-          {orders.map(order => (
-            <div key={order._id}>
-              <p><strong>ID: </strong>{order._id}</p>
-              <p><strong>Total Price: </strong>{order.totalPrice}</p>
-            </div>
-          ))}
-        
-        </div>
-      )}
-    </div>
-
-
+        {loadingOrders ? (
+          <Loader />
+        ) : errorOrders ? (
+          <Message>{errorOrders}</Message>
+        ) : (
+          <div className="box-list">
+            {orders.map(order => (
+              <Order order={order} key={order._id}/>
+            ))}
+          </div>
+        )}
+      </div>
+    </Layout>
   )
 }
 

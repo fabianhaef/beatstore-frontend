@@ -158,7 +158,7 @@ function ProductEdit({match, history}) {
               </form>
               {uploading && <Loader />}
               
-              <button type="submit">Update</button>
+              <button type="submit" className="button-primary">Update</button>
               </form>
             )}
       </FormContainer>

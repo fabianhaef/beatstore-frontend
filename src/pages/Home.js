@@ -30,10 +30,11 @@ function Home({history}) {
           <div>
             <div>
               <h2>Here are my latest products</h2>
-              <div className="product-list">
+              <div className="box-list">
                 {products.map(product => (
                   <Product product={product} key={product._id}/>
                 ))}
+                    
               </div>
             </div>    
             <Paginate page={page} pages={pages} keyword={keyword}/>     

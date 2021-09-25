@@ -10,6 +10,7 @@ import About from './pages/About';
 import Beat from './pages/Beat';
 import Cart from './pages/Cart';
 import Login from './pages/Login';
+import Logout from './pages/Logout';
 import Register from './pages/Register';
 import Profile from './pages/Profile';
 import Shipping from './pages/Shipping';
@@ -41,6 +42,7 @@ function App() {
           <Route path="/order/:id" component={OrderScreen} />
           
           <Route path="/login" component={Login} />
+          <Route path="/logout" component={Logout} />
           <Route path="/register" component={Register} />
           <Route path="/profile" component={Profile} />
           <Route path="/shipping" component={Shipping} />
