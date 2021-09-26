@@ -10,6 +10,7 @@ function Logout({location, history}) {
   return (
     <Layout>
       <h1>Logout successful</h1>
+      
     </Layout>
   )
 }

@@ -66,24 +66,27 @@ function PlaceOrder({history}) {
         {cart.cartItems.length === 0 
         ? <Message>Your Cart is empty</Message>
         : (
-          <div>
+          <div className="box-list">
             {cart.cartItems.map((item, index) => (
-              <div key={index}>
-                <Link to={`/product/${item.product}`}>{item.name} </Link>
-                <h4>Price: {item.price} USD</h4>
-                <img src={item.image} alt={item.name} />
+              <div key={item.title} className="box">
+              <div className="product-title-bar">
+                <h3 className="product-title">{item.title}</h3>
+                <h4 className="product-price">Price ${item.price}</h4>
               </div>
+              <img src={item.image} alt={item.name} />
+            </div>
             ))}
           </div>
           )
         }
-
+        <br />
+        
         <h3>Cart Total Price</h3>
         ${Number(cart.totalPrice)}
       </div>
       <div>
         {error && <Message variant='danger'>{error}</Message>}
-        <button onClick={placeOrder}>Place Order</button>
+        <button onClick={placeOrder} className="button-primary">Place Order</button>
       </div>
     </Layout>
   )

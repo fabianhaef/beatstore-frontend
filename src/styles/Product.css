@@ -40,3 +40,10 @@
 .fa-edit {
   margin-right: 2rem;
 }
+
+.product-detail {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+

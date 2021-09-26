@@ -77,7 +77,7 @@ function OrderScreen({match}) {
         <h2>Payment Method</h2>
         <p><strong>Method: </strong>{order.user.paymentMethod}</p>
         {order.is_paid ? (
-          <Message>Paid on {order.paidAt}</Message>
+          <Message>Paid on {order.paid_at.substring(0, 10)}</Message>
         ) : (
           <Message>Order not paid yet</Message>
         )}
@@ -85,12 +85,14 @@ function OrderScreen({match}) {
         {order.orderItems.length === 0 
         ? <Message>Your Order is empty</Message>
         : (
-          <div>
+          <div className="box-list">
             {order.orderItems.map((item, index) => (
-              <div key={index}>
-                <Link to={`/product/${item.product}`}>{item.name} </Link>
-                <h4>Price: {item.price} USD</h4>
-                <img src={item.image} alt={item.name} />
+              <div key={index} className="box">
+                <div className="product-title-bar">
+                      <h3 className="product-title">{item.name}</h3>
+                      <h4 className="product-price">Price ${item.price}</h4>
+                </div>
+                <img src={item.image} alt={item.title} />
               </div>
             ))}
           </div>

@@ -38,7 +38,7 @@ function Payment({history}) {
             Paypal
           </label>
 
-          <button type="submit">Submit Payment Method</button>
+          <button type="submit" className="button-primary">Submit Payment Method</button>
         </form>
       </FormContainer>
     </Layout>

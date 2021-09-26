@@ -43,7 +43,7 @@ function Shipping({history}) {
           <label htmlFor='country'>Country</label>
           <input type='text' placeholder="Enter country name" value={country ? country : ''} onChange={(e) => setCountry(e.target.value)} required/>
 
-          <button type="submit">Continue</button>
+          <button type="submit" className="button-primary">Continue</button>
         </form>
       </FormContainer>
     </Layout>

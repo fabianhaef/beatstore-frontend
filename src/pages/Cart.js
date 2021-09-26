@@ -13,6 +13,10 @@ function Cart({match, location, history }) {
   const cart = useSelector(state => state.cart)
   const {cartItems} = cart
 
+  const totalPrice = cartItems.reduce((acc, item) => acc + Number(item.price), 0).toFixed(2)
+  const taxPrice = (totalPrice / 100 * 7).toFixed(2)
+  const cartTotal = (Number(totalPrice) + Number(taxPrice)).toFixed(2)
+
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId))
@@ -36,26 +40,35 @@ function Cart({match, location, history }) {
         ) : (
           <div>
             <h2>Your items</h2>
-            {cartItems.map(item => (
-              <div key={item.title}>
-                <h3>{item.title}</h3>
-                <img src={item.image} alt={item.name} />
-                <p>Price ${item.price}</p>
+            <div className="box-list">
+              {cartItems.map(item => (
+                  <div key={item.title} className="box">
+                    <div className="product-title-bar">
+                      <h3 className="product-title">{item.title}</h3>
+                      <h4 className="product-price">Price ${item.price}</h4>
+                    </div>
 
-                <button type="submit" onClick={() => removeFromCartHandler(item.product)}>Remove From cart</button>
-              </div>
-            ))}
+                    <img src={item.image} alt={item.name} />
+                    <br />
+
+                    <button type="submit" className="button-secondary" onClick={() => removeFromCartHandler(item.product)}>Remove From cart</button>
+                  </div>
+              ))}
+            </div>
           </div>
         )
       }
-      <h2>Your Total</h2>
-      ${cartItems.reduce((acc, item) => acc + Number(item.price), 0).toFixed(2)}
+      <br />
+      <h3>Your Total ${totalPrice}</h3>
+      <p>Tax Price ${taxPrice}</p>
+      <h4>Cart total ${cartTotal}</h4>
+      {cartItems.length === 0 
+        ? <button onClick={checkoutHandler} disabled className="button-secondary">Proceed to checkout</button>
+        : <button onClick={checkoutHandler} className="button-primary">Proceed to checkout</button>
+      }
+      
       </div>
 
-      {cartItems.length === 0 
-        ? <button onClick={checkoutHandler} disabled className="button-primary">Proceed to checkout</button>
-        : <br />
-        }
     </Layout>
   )
 }

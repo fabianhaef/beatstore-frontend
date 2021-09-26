@@ -27,27 +27,34 @@ function Beat({ match, history }) {
   return (
     <Layout>
       <Link to='/'>Go Back</Link>
+
       {loading ?
         <Loader></Loader>
         : error 
           ? <Message variant='error'>{error}</Message>
           : (
-          <div>
-            <h4>{product.name} </h4>
-            <h4>Price: {product.price} USD</h4>
-            <img src={product.image} alt={product.name} />
-
-            {product.is_soundkit === false ? (
-              //< MusicPlayer file={product.file} />
-              <p>Hello</p>
-            ) : (
-              <p>This is a soundkit, can not play a preview</p>
-            )}
+            <div>
+              <div className="product-detail">
+                <div class="product-detail-infos">
+                  <h4 className="product-title">{product.title} </h4>
+                  <h5 className="product-price">${product.price}</h5>
+                  <p className="product-description">{product.description}</p>
+                </div>
+                <div>
+                  <img src={product.image} alt={product.name} width="512"/>
+                </div>
+              </div>
+              {product.is_soundkit === false ? (
+                    //< MusicPlayer file={product.file} />
+                    <p>MUSIC PLAYER HERE</p>
+                  ) : (
+                    <p>This is a soundkit, can not play a preview</p>
+                  )}
+              <form method="POST">
+                <button type="submit" className="button-primary" onClick={addToCartHandler}>Add to cart</button>
+              </form>
+            </div>
             
-            <form method="POST">
-              <button type="submit" className="button-primary" onClick={addToCartHandler}>Add to cart</button>
-            </form>
-          </div>
           )
       }
 
