@@ -40,9 +40,9 @@ function Login({location, history}) {
         {loading && <Loader />}
         <form onSubmit={submitHandler}>
           <label htmlFor='email'>Email Adress</label>
-          <input type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+          <input className="inputField" type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}/>
           <label htmlFor='password'>Password</label>
-          <input type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+          <input className="inputField" type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)}/>
           <button type="submit" className="button-primary">Login</button>
         </form>
         <br />

@@ -62,10 +62,10 @@ function UserEdit({match, history}) {
             : (
               <form onSubmit={submitHandler}>
               <label htmlFor='email'>Name</label>
-                <input type='text' placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required/>
+                <input className="inputField" type='text' placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required/>
 
                 <label htmlFor='email'>Email Adress</label>
-                <input type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+                <input className="inputField" type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
 
                 <button type="submit" className="button-primary">Update</button>
               </form>

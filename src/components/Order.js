@@ -11,7 +11,10 @@ function Order({order, key}) {
       <h5>All order items:</h5>
       <div>
         {order.orderItems.map(item => (
-          <p key={item.name}>{item.name} ${item.price}</p>
+          <div>
+            <p key={item.name}>{item.name} ${item.price}</p>
+            <a href={item.file} download>Trackout</a>
+          </div>
         ))}
       </div>
       <h5>Paid:</h5>
@@ -20,7 +23,6 @@ function Order({order, key}) {
       ) : (
         <p>Paid on {order.paid_at.substring(0, 10)} with {order.payment_method}</p>
       )}    
-      <h5>Downloadables</h5>
     </div>
   )
 }

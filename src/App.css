@@ -3,6 +3,7 @@
 
 :root {
   --primary: rgba(64, 132, 132, 0.8);
+  --secondary: #ffd200;
   --white: #fcfcfc;
   --black: #222222;
 }
@@ -68,12 +69,14 @@ html {
   transition: 0.3s;
 }
 
-input {
+.inputField {
   border: 2px solid var(--primary);
   min-width: 250px;
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;
+  color: var(--white);
 }
+
 
 form {
   display: flex;

@@ -53,13 +53,13 @@ function Register({location, history}) {
           <input type='text' placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required/>
 
           <label htmlFor='email'>Email Adress</label>
-          <input type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+          <input className="inputField" type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
 
           <label htmlFor='password'>Password</label>
-          <input type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+          <input className="inputField" type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
 
           <label htmlFor='confirmPassword'>Confirm Password</label>
-          <input type='password' placeholder="Enter password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
+          <input className="inputField" type='password' placeholder="Enter password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
 
           <button type="submit" className="button-primary">Register</button>
         </form>

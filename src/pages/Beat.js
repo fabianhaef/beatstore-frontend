@@ -7,7 +7,7 @@ import {listProductDetails} from '../actions/productActions'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import Layout from '../components/Layout'
-import MusicPlayer from '../components/MusicPlayer';
+import {AudioPlayer} from '../components/AudioPlayer';
 
 function Beat({ match, history }) {
   const dispatch = useDispatch()
@@ -39,22 +39,21 @@ function Beat({ match, history }) {
                   <h4 className="product-title">{product.title} </h4>
                   <h5 className="product-price">${product.price}</h5>
                   <p className="product-description">{product.description}</p>
+                  {product.is_soundkit === false ? (
+                    <AudioPlayer audioFile={product.file}/>
+                  ) : (
+                    <p>This is a soundkit, can not play a preview</p>
+                  )}
                 </div>
                 <div>
                   <img src={product.image} alt={product.name} width="512"/>
                 </div>
               </div>
-              {product.is_soundkit === false ? (
-                    //< MusicPlayer file={product.file} />
-                    <p>MUSIC PLAYER HERE</p>
-                  ) : (
-                    <p>This is a soundkit, can not play a preview</p>
-                  )}
+
               <form method="POST">
                 <button type="submit" className="button-primary" onClick={addToCartHandler}>Add to cart</button>
               </form>
             </div>
-            
           )
       }
 

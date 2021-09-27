@@ -138,23 +138,23 @@ function ProductEdit({match, history}) {
             : (
               <form onSubmit={submitHandler}>
               <label htmlFor='title'>Title</label>
-              <input type='text' placeholder="Enter your name" value={title} onChange={(e) => setTitle(e.target.value)} required/>
+              <input className="inputField" type='text' placeholder="Enter your name" value={title} onChange={(e) => setTitle(e.target.value)} required/>
 
               <label htmlFor='price'>Price</label>
-              <input type='number' placeholder="Enter price" value={price} onChange={(e) => setPrice(e.target.value)} required/>
+              <input className="inputField" type='number' placeholder="Enter price" value={price} onChange={(e) => setPrice(e.target.value)} required/>
 
               <label htmlFor='description'>Description</label>
-              <input type='text' placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)} required/>
+              <input className="inputField" type='text' placeholder="Enter description" value={description} onChange={(e) => setDescription(e.target.value)} required/>
               
               <form id="image-file" onChange={uploadImageHandler}>
                 <label>Choose Your Product Image </label>
-                <input type="file" id="docpicker" accept=".png, .jpg"></input>
+                <input className="inputField" type="file" id="docpicker" accept=".png, .jpg"></input>
               </form>
               {uploading && <Loader />}
 
               <form id="music-file" onChange={uploadFileHandler}>
                 <label>Choose Your Music File </label>
-                <input type="file" id="docpicker" accept=".wav, .mp3"></input>
+                <input className="inputField" type="file" id="docpicker" accept=".wav, .mp3"></input>
               </form>
               {uploading && <Loader />}
               
