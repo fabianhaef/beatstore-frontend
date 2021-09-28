@@ -27,36 +27,30 @@ function Beat({ match, history }) {
   return (
     <Layout>
       <Link to='/'>Go Back</Link>
-
       {loading ?
         <Loader></Loader>
         : error 
           ? <Message variant='error'>{error}</Message>
           : (
-            <div>
-              <div className="product-detail">
-                <div class="product-detail-infos">
-                  <h4 className="product-title">{product.title} </h4>
-                  <h5 className="product-price">${product.price}</h5>
-                  <p className="product-description">{product.description}</p>
-                  {product.is_soundkit === false ? (
-                    <AudioPlayer audioFile={product.file}/>
-                  ) : (
-                    <p>This is a soundkit, can not play a preview</p>
-                  )}
-                </div>
-                <div>
-                  <img src={product.image} alt={product.name} width="512"/>
-                </div>
-              </div>
-
-              <form method="POST">
-                <button type="submit" className="button-primary" onClick={addToCartHandler}>Add to cart</button>
-              </form>
+            <div className="beat">
+              <img className="beat-background" alt="beat cover background" src={product.image} />
+              {product.is_soundkit === false ? (
+              < AudioPlayer file={product.file} />
+              ) : (
+              <p>This is a soundkit, can not play a preview</p>
+              )}
+              <h4 className="beat-title">{product.title} </h4>
+              <h5 className="beat-price">${product.price}</h5>
+              <p className="product-description">{product.description}</p>
             </div>
+
+              
+
           )
       }
-
+      <form method="POST">
+        <button type="submit" className="button-primary" onClick={addToCartHandler}>Add to cart</button>
+      </form>
     </Layout>
   )
 }

@@ -1,11 +1,21 @@
 @import url('../src/styles/Product.css');
+@import url('../src/styles/Beat.css');
 @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@500;600;700&family=Roboto&display=swap');
 
 :root {
-  --primary: rgba(64, 132, 132, 0.8);
+  --primary: #3f8383cc;
+  --primary-light: #5BB3b3;
+  --primary-medium: #377171;
+  --primary-dark: #162C2C;
+  --secondary-dark: #7C6703;
+  --secondary-light: rgba(254, 223, 77, 0.1);
   --secondary: #ffd200;
   --white: #fcfcfc;
   --black: #222222;
+  --dark-gray: #212121;
+  --medium-gray: #383838;
+  --light-gray: rgba(241, 241, 241, 0.7);
+
 }
 
 *, html {

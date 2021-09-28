@@ -9,11 +9,11 @@
   width: 550px;
 }
 
-.product:last-child {
+.pbeatlast-child {
   margin-right: 0;
 }
 
-.product-title-bar {
+.beat-title-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -21,24 +21,25 @@
   margin-bottom: 0.5rem;
 }
 
-.product-title {
+.beat-title {
   font-family: 'Gemunu Libre', sans-serif;
   font-weight: 600;
   font-size: 2rem;
   color: var(--primary-dark)
 }
 
-.product-price {
+.beat-price {
   font-size: 1rem;
 }
 
-.product-description {
+.beat-description {
+  width: 750px;
   font-size: 0.75rem;
   margin-bottom: 0.75rem;
   color: var(--dark-gray);
 }
 
-.product-image {
+.beat-image {
   width: 100%;
   margin-bottom: 0.5rem;
 }
