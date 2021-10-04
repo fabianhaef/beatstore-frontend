@@ -173,18 +173,16 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
         }
   
         const { data } = await axios.get(
-            `/api/orders/myorders`,
+            `/api/orders/myorders/`,
             config
-        )
+        )  
+        console.log("data", data)
   
         dispatch({
             type: ORDER_LIST_MY_SUCCESS,
             payload: data
         })
-  
-  
-        localStorage.removeItem('cartItems')
-  
+
   
     } catch (error) {
         dispatch({

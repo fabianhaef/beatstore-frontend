@@ -12,6 +12,7 @@ function Shipping({history}) {
 
   const dispatch = useDispatch()
 
+  const [email, setEmail] = useState(shippingAddress.email)
   const [address, setAddress] = useState(shippingAddress.address)
   const [city, setCity] = useState(shippingAddress.city)
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode)
@@ -19,7 +20,7 @@ function Shipping({history}) {
 
   const submitHandler = (e) => {
       e.preventDefault()
-      dispatch(saveShippingAddress({ address, city, postalCode, country }))
+      dispatch(saveShippingAddress({ address, city, postalCode, country, email }))
       history.push('/payment')
   }
 
@@ -27,9 +28,11 @@ function Shipping({history}) {
     <Layout>
 
       <FormContainer>
-        <CheckoutSteps />
+        <CheckoutSteps step1 step2 />
         <h1>Shipping</h1>
         <form onSubmit={submitHandler}>
+          <label htmlFor='email'>Email</label>
+          <input className="inputField" type='email' placeholder="Enter your email" value={email ? email : ''} onChange={(e) => setEmail(e.target.value)} required/>
 
           <label htmlFor='address'>Address</label>
           <input className="inputField" type='text' placeholder="Enter your name" value={address ? address : ''} onChange={(e) => setAddress(e.target.value)} required/>

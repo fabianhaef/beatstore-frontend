@@ -12,9 +12,9 @@ const AudioPlayer = ({file}) => {
   const [currentTime, setCurrentTime] = useState(0);
 
   // references
-  const audioPlayer = useRef();   // reference our audio component
-  const progressBar = useRef();   // reference our progress bar
-  const animationRef = useRef();  // reference the animation
+  const audioPlayer = useRef(); 
+  const progressBar = useRef();  
+  const animationRef = useRef(); 
 
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
@@ -58,13 +58,16 @@ const AudioPlayer = ({file}) => {
     setCurrentTime(progressBar.current.value);
   }
 
-  const backThirty = () => {
-    progressBar.current.value = Number(progressBar.current.value - 30);
+  const backFifteen = () => {
+    progressBar.current.value = Number(progressBar.current.value - 15);
     changeRange();
   }
 
-  const forwardThirty = () => {
-    progressBar.current.value = Number(progressBar.current.value + 30);
+  const forwardFifteen = () => {
+    console.log(progressBar.current.value)
+    console.log("progresBar", progressBar.current.value)
+    progressBar.current.value = Number(progressBar.current.value + 15);
+    console.log(progressBar.current.value)
     changeRange();
   }
 
@@ -78,11 +81,11 @@ const AudioPlayer = ({file}) => {
     <div className={styles.audioPlayer}>
       <audio ref={audioPlayer} src={file} preload="metadata" onLoadedMetadata={onLoadedMetadata}></audio>
       <div className={styles.top}>
-        <button className={styles.forwardBackward} onClick={backThirty}><AiOutlineArrowLeft /> 30</button>
+        <button className={styles.forwardBackward} onClick={backFifteen}><AiOutlineArrowLeft /> 15</button>
         <button onClick={togglePlayPause} className={styles.playPause}>
           {isPlaying ? <AiOutlinePauseCircle/> : <AiOutlinePlayCircle className={styles.play} />}
         </button>
-        <button className={styles.forwardBackward} onClick={forwardThirty}>30 <AiOutlineArrowRight /></button>
+        <button className={styles.forwardBackward} onClick={forwardFifteen}>15 <AiOutlineArrowRight /></button>
 
       </div>
       <div className={styles.top}>

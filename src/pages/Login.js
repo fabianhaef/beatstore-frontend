@@ -35,18 +35,21 @@ function Login({location, history}) {
   return (
     <Layout>
       <FormContainer>
-        <h1>Login</h1>
-        {error && <Message variant='danger'>{error}</Message>}
-        {loading && <Loader />}
-        <form onSubmit={submitHandler}>
-          <label htmlFor='email'>Email Adress</label>
-          <input className="inputField" type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}/>
-          <label htmlFor='password'>Password</label>
-          <input className="inputField" type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-          <button type="submit" className="button-primary">Login</button>
-        </form>
-        <br />
-        <p>New customer? <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link></p>
+        <div className="full-form">
+
+          <h1>Login</h1>
+          {error && <Message variant='danger'>{error}</Message>}
+          {loading && <Loader />}
+          <form onSubmit={submitHandler}>
+            <label htmlFor='email'>Email Adress</label>
+            <input className="inputField" type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <label htmlFor='password'>Password</label>
+            <input className="inputField" type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <button type="submit" className="button-primary">Login</button>
+          </form>
+          <br />
+          <p>New customer? <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Register</Link></p>
+        </div>
       </FormContainer>
     </Layout>
   )

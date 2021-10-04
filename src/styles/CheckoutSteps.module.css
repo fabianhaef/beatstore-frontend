@@ -1,0 +1,9 @@
+.checkoutSteps {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.checkoutContainer:not(:last-child) {
+  margin-right: 1rem;
+}
+

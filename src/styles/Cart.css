@@ -1,0 +1,9 @@
+.cart {
+  width: 550px;
+
+}
+
+.tax-price {
+  color: var(--medium-gray);
+  margin-bottom: 0.5rem;
+}

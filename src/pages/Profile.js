@@ -22,17 +22,19 @@ function Profile({history}) {
 
   const dispatch = useDispatch()
 
-  const userDetails = useSelector(state => state.userRegister)
-  const {error, loading, user} = userDetails
+  const userDetails = useSelector(state => state.userDetails)
+  const { error, loading, user } = userDetails
 
   const userLogin = useSelector(state => state.userLogin)
-  const {userInfo} = userLogin
+  const { userInfo } = userLogin
 
   const userUpdateProfile = useSelector(state => state.userUpdateProfile)
-  const {success} = userUpdateProfile
+  const { success } = userUpdateProfile
 
   const orderListMy = useSelector(state => state.orderListMy)
-  const {loading: loadingOrders, error: errorOrders, orders} = orderListMy
+  console.log(orderListMy)
+  const { loading: loadingOrders, error: errorOrders, orders } = orderListMy
+  console.log(orders)
 
   useEffect(() => {
     if (!userInfo) {
@@ -55,6 +57,7 @@ function Profile({history}) {
       setMessage('Passwords do not match')
     } else {
       dispatch(updateUserProfile({'id': user._id, 'name': name, 'email': email, 'password': password}))
+      setMessage('')
     }
   }
 
@@ -67,7 +70,7 @@ function Profile({history}) {
         {loading && <Loader />}
         <form onSubmit={submitHandler} className="form">
           <label htmlFor='email'>Name</label>
-          <input className="inputField" type='text' placeholder="Enter your name" value={name ? name : ''} onChange={(e) => setName(e.target.value)} required/>
+          <input className="inputField" type='text' placeholder='Enter name' value={name ? name : ''} onChange={(e) => setName(e.target.value)} required/>
 
           <label htmlFor='email'>Email Adress</label>
           <input className="inputField" type='email' placeholder="Enter email" value={email ? email : ''} onChange={(e) => setEmail(e.target.value)} required/>
@@ -83,18 +86,18 @@ function Profile({history}) {
       </FormContainer>
 
       <div className="container">
-      <h2>My Orders</h2>
-        {loadingOrders ? (
-          <Loader />
-        ) : errorOrders ? (
-          <Message>{errorOrders}</Message>
-        ) : (
-          <div className="box-list">
-            {orders.map(order => (
-              <Order order={order} key={order._id}/>
-            ))}
-          </div>
-        )}
+        <h2>My Orders</h2>
+          {loadingOrders ? (
+            <Loader />
+          ) : errorOrders ? (
+            <Message>{errorOrders}</Message>
+          ) : (
+            <div className="box-list">
+              {orders.map(order => (
+                <Order order={order} key={order._id}/>
+              ))}
+            </div>
+          )}
       </div>
     </Layout>
   )

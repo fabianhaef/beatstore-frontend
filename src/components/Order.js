@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {Link} from 'react-router-dom';
+
 function Order({order, key}) {
 
   return (
@@ -23,6 +25,10 @@ function Order({order, key}) {
       ) : (
         <p>Paid on {order.paid_at.substring(0, 10)} with {order.payment_method}</p>
       )}    
+
+      <Link to={`/order/${order._id}`}>
+        <button className='button-primary'>Details</button>
+      </Link>
     </div>
   )
 }

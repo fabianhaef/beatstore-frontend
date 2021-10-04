@@ -1,0 +1,16 @@
+.place-order-infos {
+  display: flex;
+  flex-direction: row;
+}
+
+.place-order-infos > .box:not(:last-child) {
+  margin-right: 2rem;
+}
+
+.place-order-infos > .box {
+  margin-bottom: 2rem;
+}
+
+.place-order-infos > .box > .button-primary {
+  min-width: 320px;
+}

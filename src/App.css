@@ -1,5 +1,8 @@
-@import url('../src/styles/Product.css');
 @import url('../src/styles/Beat.css');
+@import url('../src/styles/Cart.css');
+@import url('../src/styles/Payment.css');
+@import url('../src/styles/PlaceOrder.css');
+@import url('../src/styles/Product.css');
 @import url('https://fonts.googleapis.com/css2?family=Gemunu+Libre:wght@500;600;700&family=Roboto&display=swap');
 
 :root {
@@ -39,6 +42,10 @@ li {
 
 ul {
   margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 0.25rem;
 }
 
 html {
@@ -82,9 +89,13 @@ html {
 .inputField {
   border: 2px solid var(--primary);
   min-width: 250px;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
   padding: 0.5rem 1rem;
   color: var(--white);
+}
+
+.inputLabel {
+  margin-bottom: 0.5rem;
 }
 
 
@@ -120,12 +131,23 @@ form {
 
 h1 {
   margin-bottom: 2rem;
+  color: var(--black)
 }
 
 h2 {
   margin-bottom: 1.5rem;
+  color: var(--dark-gray)
 }
 
+h3 {
+  margin-bottom: 1rem;
+  color: var(--dark-gray);
+}
+
+h4 {
+  margin-bottom: 0.5rem;
+  color: var(--dark-gray);
+}
 .button-secondary {
   background: transparent;
   color: var(--primary);
@@ -139,3 +161,18 @@ h2 {
   --primary: rgba(64, 132, 132, 0.6);
   transition: 0.3s;
 }
+
+
+.full-form {
+  width: 550px;
+  margin: 0 auto;
+}
+
+.horizontal-ruler {
+  height: 2px;
+  margin-bottom: 1rem;
+  color: var(--primary-dark);
+  background-color: var(--primary-dark);
+  border: none;
+}
+

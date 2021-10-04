@@ -53,13 +53,24 @@ function PlaceOrder({history}) {
   return (
     <Layout >
       <CheckoutSteps step1 step2 step3 step4 />
-      <div>
-        <h1>Place your order</h1>
-        <h2>Shipping adress</h2>
-        <p>{cart.shippingAddress.address}, {cart.shippingAddress.city}</p>
-        <p>{cart.shippingAddress.postalCode}, {cart.shippingAddress.country}</p>
-        <h2>Payment method</h2>
-        <p>{cart.paymentMethod}</p>
+      <h1>Place your order</h1>
+      <div className="place-order-infos">
+        <div className="box">
+          <h2>Shipping adress</h2>
+          <a href={`mailto:${cart.shippingAddress.email}`}>{cart.shippingAddress.email}</a>
+          <p>{cart.shippingAddress.address}, {cart.shippingAddress.city}</p>
+          <p>{cart.shippingAddress.postalCode}, {cart.shippingAddress.country}</p>
+        </div>
+        <div className="box">
+          <h2>Payment method</h2>
+          <p>{cart.paymentMethod}</p>
+        </div>
+        <div className="box">
+          <h3>Cart Total Price</h3>
+          <h4>${Number(cart.totalPrice)}</h4>
+          {error && <Message variant='danger'>{error}</Message>}
+          <button onClick={placeOrder} className="button-primary">Place Order</button>
+        </div>
       </div>
       <div>
         <h2>Order Items</h2>
@@ -79,14 +90,10 @@ function PlaceOrder({history}) {
           </div>
           )
         }
-        <br />
         
-        <h3>Cart Total Price</h3>
-        ${Number(cart.totalPrice)}
+        
       </div>
       <div>
-        {error && <Message variant='danger'>{error}</Message>}
-        <button onClick={placeOrder} className="button-primary">Place Order</button>
       </div>
     </Layout>
   )

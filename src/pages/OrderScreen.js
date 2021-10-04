@@ -62,42 +62,20 @@ function OrderScreen({match}) {
     dispatch(payOrder(orderId, paymentResult))
   }
 
-
   return loading ? (
     <Loader />
   ) : error ? (
     <Message>{error}</Message>
   ) : (
     <Layout >
-        <h1>Your order #{order._id}</h1>
-      <div>
-        <h2>Shipping Information</h2>
-        <p><strong>Name: </strong>{order.user.name}</p>
-        <p><strong>Email: </strong><a href={`mailto:${order.user.email}`}>{order.user.email}</a></p>
-        <h2>Payment Method</h2>
-        <p><strong>Method: </strong>{order.user.paymentMethod}</p>
-        {order.is_paid ? (
-          <Message>Paid on {order.paid_at.substring(0, 10)}</Message>
-        ) : (
-          <Message>Order not paid yet</Message>
-        )}
-        <h2>Order Items</h2>
-        {order.orderItems.length === 0 
-        ? <Message>Your Order is empty</Message>
-        : (
-          <div className="box-list">
-            {order.orderItems.map((item, index) => (
-              <div key={index} className="box">
-                <div className="product-title-bar">
-                      <h3 className="product-title">{item.name}</h3>
-                      <h4 className="product-price">Price ${item.price}</h4>
-                </div>
-                <img src={item.image} alt={item.title} />
-              </div>
-            ))}
-          </div>
-          )
-        }
+      <h1>Your order #{order._id}</h1>
+      <p>Your products will be available as download after you have paid your invoice. They are available here or under your profile page</p>
+      <Link to="/profile">Link to your profile</Link>
+      {order.is_paid ? (
+        <Message>Paid on {order.paid_at.substring(0, 10)}</Message>
+      ) : (
+        <Message>Pay now to finish your order</Message>
+      )}
         {!order.is_paid && (
           <div>
             {loadingPay && <Loader />}
@@ -111,7 +89,30 @@ function OrderScreen({match}) {
             )}
           </div>
         )}
-      </div>
+      <br />
+      <h2>Order Items</h2>
+        {order.orderItems.length === 0 
+        ? <Message>Your Order is empty</Message>
+        : (
+          <div className="box-list">
+            {order.orderItems.map((item, index) => (
+              
+              <div key={index} className="box">
+                <div className="product-title-bar">
+                      <h3 className="product-title">{item.name}</h3>
+                      <h4 className="product-price">Price ${item.price}</h4>
+                </div>
+                {order.is_paid ? (
+                  <a href={`${item.file}.wav`} download>Trackout</a>
+                ) : (
+                  <Message>Order not paid yet</Message>
+                )}
+                <img src={item.image} alt={item.title} />
+              </div>
+            ))}
+          </div>
+          )
+        }
     </Layout>
   )
 }

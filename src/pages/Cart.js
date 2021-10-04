@@ -59,14 +59,18 @@ function Cart({match, location, history }) {
         )
       }
       <br />
-      <h3>Your Total ${totalPrice}</h3>
-      <p>Tax Price ${taxPrice}</p>
-      <h4>Cart total ${cartTotal}</h4>
-      {cartItems.length === 0 
-        ? <button onClick={checkoutHandler} disabled className="button-secondary">Proceed to checkout</button>
-        : <button onClick={checkoutHandler} className="button-primary">Proceed to checkout</button>
-      }
-      
+      <div className="cart">
+
+        <h3>Your Total: <strong>${totalPrice}</strong></h3>
+        <p className="tax-price">Tax Price ${taxPrice}</p>
+        <hr className="horizontal-ruler"/>
+        <h4>Cart total ${cartTotal}</h4>
+        {cartItems.length === 0 
+          ? <button onClick={checkoutHandler} disabled className="button-secondary">Proceed to checkout</button>
+          : <button onClick={checkoutHandler} className="button-primary">Proceed to checkout</button>
+        }
+        
+      </div>
       </div>
 
     </Layout>

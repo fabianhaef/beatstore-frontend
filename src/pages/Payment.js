@@ -30,10 +30,10 @@ function Payment({history}) {
     <Layout>
       <FormContainer>
         <CheckoutSteps step1 step2 step3 />
-
-        <form onSubmit={submitHandler}>
-          <label>Select Method</label>
-          <label>
+        <h1>Payment</h1>
+        <form onSubmit={submitHandler} className="payment-form">
+          <label className="select-payment-method">Select a payment method</label>
+          <label className="payment-method">
             <input type='radio' placeholder="PayPal" value={paymentMethod} onChange={(e) => setPaymentMethod(e.target.value)} checked/>
             Paypal
           </label>

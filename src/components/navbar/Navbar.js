@@ -51,7 +51,7 @@ function Navbar() {
         {userInfo ? (
         <NavBtn>
             <NavBtnLink to="/profile">Profile</NavBtnLink>
-          </NavBtn>
+        </NavBtn>
         ) : (
         <NavBtn>
           <NavBtnLink to="/login">Login</NavBtnLink>

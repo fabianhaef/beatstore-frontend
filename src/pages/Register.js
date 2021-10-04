@@ -44,27 +44,29 @@ function Register({location, history}) {
     <Layout>
 
       <FormContainer>
-        <h1>Register</h1>
-        {message && <Message variant='danger'>{message}</Message>}
-        {error && <Message variant='danger'>{error}</Message>}
-        {loading && <Loader />}
-        <form onSubmit={submitHandler}>
-        <label htmlFor='email'>Name</label>
-          <input type='text' placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required/>
+        <div className="full-form">
+          <h1>Register</h1>
+          {message && <Message variant='danger'>{message}</Message>}
+          {error && <Message variant='danger'>{error}</Message>}
+          {loading && <Loader />}
+          <form onSubmit={submitHandler}>
+            <label className="inputLabel" htmlFor='email'>Name</label>
+            <input className="inputField" type='text' placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required/>
 
-          <label htmlFor='email'>Email Adress</label>
-          <input className="inputField" type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
+            <label className="inputLabel" htmlFor='email'>Email Adress</label>
+            <input className="inputField" type='email' placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
 
-          <label htmlFor='password'>Password</label>
-          <input className="inputField" type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
+            <label className="inputLabel" htmlFor='password'>Password</label>
+            <input className="inputField" type='password' placeholder="Enter password" value={password} onChange={(e) => setPassword(e.target.value)} required/>
 
-          <label htmlFor='confirmPassword'>Confirm Password</label>
-          <input className="inputField" type='password' placeholder="Enter password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
+            <label className="inputLabel" htmlFor='confirmPassword'>Confirm Password</label>
+            <input className="inputField" type='password' placeholder="Enter password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required/>
 
-          <button type="submit" className="button-primary">Register</button>
-        </form>
-        <br />
-        <p>Already a member? <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link></p>
+            <button type="submit" className="button-primary">Register</button>
+          </form>
+          <br />
+          <p>Already a member? <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Login</Link></p>
+        </div>
       </FormContainer>
     </Layout>
   )

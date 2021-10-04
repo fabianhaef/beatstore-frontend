@@ -37,11 +37,11 @@ function Beat({ match, history }) {
               {product.is_soundkit === false ? (
               < AudioPlayer file={product.file} />
               ) : (
-              <p>This is a soundkit, can not play a preview</p>
+                ''
               )}
               <h4 className="beat-title">{product.title} </h4>
               <h5 className="beat-price">${product.price}</h5>
-              <p className="product-description">{product.description}</p>
+              <p className="beat-description">{product.description}</p>
             </div>
 
               
@@ -49,7 +49,7 @@ function Beat({ match, history }) {
           )
       }
       <form method="POST">
-        <button type="submit" className="button-primary" onClick={addToCartHandler}>Add to cart</button>
+        <button type="submit" className="button-primary" id="beat-add-to-cart"onClick={addToCartHandler}>Add to cart</button>
       </form>
     </Layout>
   )

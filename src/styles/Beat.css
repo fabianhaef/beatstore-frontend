@@ -6,7 +6,7 @@
 }
 
 .beat > img {
-  width: 550px;
+  width: 450px;
 }
 
 .pbeatlast-child {
@@ -30,12 +30,13 @@
 
 .beat-price {
   font-size: 1rem;
+  margin-bottom: 1rem;
 }
 
 .beat-description {
-  width: 750px;
+  width: 550px;
   font-size: 0.75rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
   color: var(--dark-gray);
 }
 
@@ -65,3 +66,8 @@
 .product-detail-infos {
   margin-right: 2rem;
 } 
+
+#beat-add-to-cart{
+  width: 550px;
+  margin: 0 auto;
+}

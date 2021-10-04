@@ -1,0 +1,22 @@
+.payment-form {
+  width: 550px;
+}
+
+.select-payment-method {
+  margin-bottom: 1rem;
+}
+
+.payment-method {
+  padding: 1rem;
+  font-weight: 700;
+  color: var(--dark-gray)
+}
+
+.payment-method:hover {
+  color: var(--primary);
+}
+
+.payment-method > input {
+  margin-right: 0.5rem;
+}
+
